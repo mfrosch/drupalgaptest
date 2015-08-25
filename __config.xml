@@ -3,7 +3,7 @@
     <name>DrupalGap Test</name>
     <description>The PhoneGap Developer app is a testing utility for web developers and designers using the PhoneGap framework. After installing this app on your device you will be able to connect it to the PhoneGap desktop app to instantly view and test your work.
     </description>
-    <author email="mf@crusoemedia.com" href="http://www.crusoemedia.com.com">
+    <author email="mf@crusoemedia.com" href="http://www.crusoemedia.com">
         DrupalGap Test
     </author>
     <preference name="permissions" value="none" />
