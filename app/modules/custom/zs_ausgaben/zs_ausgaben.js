@@ -45,16 +45,16 @@ function zs_ausgaben_aktuell_page()
 {
 	var content = {};
 	
-	zs_ausgaben_get_current_issue(
-	{
-	    success: function(issue) 
-	    {
-	    	$('.issue_head').text(issue.web_headline);
-	    }
-	});	
+//	zs_ausgaben_get_current_issue(
+//	{
+//	    success: function(issue) 
+//	    {
+//	    	$('.issue_head').text(issue.web_headline);
+//	    }
+//	});	
 	
 	var currentissue = '<div class="current_issue">' 
-	+ '<div class="issue_head"></div>'
+	+ '<div class="issue_head">123123</div>'
 	+ '</div>';
 	content['ausgabe_img'] = 
 	{
