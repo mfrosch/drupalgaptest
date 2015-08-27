@@ -164,15 +164,24 @@ drupalgap.settings.menus = {}; // Do not remove this line.
 drupalgap.settings.menus['main_menu'] = {
   options: menu_popup_get_default_options(),
   links: [
-    {
-      title:'Content',
-      path:'node',
-      options:{
-        attributes:{
-          'data-icon':'star'
-        }
-      }
-    },
+          {
+              title:'Datenschutz',
+              path:'datenschutz',
+              options:{
+                attributes:{
+                  'data-icon':'star'
+                }
+              }
+            },
+            {
+                title:'Impressum',
+                path:'impressum',
+                options:{
+                  attributes:{
+                    'data-icon':'star'
+                  }
+                }
+              },
 //    {
 //      title:'Taxonomy',
 //      path:'taxonomy/vocabularies',
@@ -259,27 +268,27 @@ drupalgap.settings.menus.regions = {}; // Do not remove this line.
 drupalgap.settings.menus.regions['header'] = {
   links:[
     /* Main Menu Popup Menu Button */
-//    {
-//      options: {
-//        popup: true,
-//        popup_delta: 'main_menu',
-//        attributes: {
-//          'class': 'ui-btn-left',
-//          'data-icon': 'bars'
-//        }
-//      }
-//    },
-    /* Home Button */
     {
-      path: '',
       options: {
+        popup: true,
+        popup_delta: 'main_menu',
         attributes: {
-          'data-icon': 'home',
-          'data-iconpos': 'notext',
-          'class': 'ui-btn-left'
+          'class': 'ui-btn-right',
+          'data-icon': 'info'
         }
       }
     },
+    /* Home Button */
+    {
+        path: '',
+        options: {
+          attributes: {
+            'data-icon': 'home',
+            'data-iconpos': 'notext',
+            'class': 'ui-btn-left show-logo'
+          }
+        }
+      },
     /* Anonymous User Popup Menu Button */
 //    {
 //      options: {
