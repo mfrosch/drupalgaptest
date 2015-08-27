@@ -4,26 +4,23 @@
 function zs_ausgaben_menu() 
 {
 	var items = {};
-	items['aktuell'] = 
+	items['neu'] = 
 	{
-		title: 'Aktuelle Ausgabe',
-		page_callback: 'zs_ausgaben_aktuell_page'
+		title: 'NEU',
+		page_callback: 'zs_ausgaben_neu_page'
+	};
+	items['alle'] = 
+	{
+		title: 'Alle Ausgaben',
+		page_callback: 'zs_ausgaben_alle_page'
+	};
+	items['downloads'] = 
+	{
+		title: 'Meine Downloads',
+		page_callback: 'zs_ausgaben_downloads_page'
 	};
 	return items;
 }
-
-function zs_ausgaben_get_user_count(options) 
-{
-	try 
-	{
-	    options.method = 'POST';
-	    options.path = 'zs_mobile_service_resources/get_user_count.json';
-	    options.service = 'zs_mobile_service';
-	    options.resource = 'get_user_count';
-	    Drupal.services.call(options);
-	}
-	catch (error) { console.log('zs_mobile_service_get_user_count - ' + error); }
-}	
 
 function zs_ausgaben_get_current_issue(options) 
 {
@@ -41,7 +38,7 @@ function zs_ausgaben_get_current_issue(options)
 /**
 * The callback for the "Aktuelle Ausgabe" page.
 */
-function zs_ausgaben_aktuell_page() 
+function zs_ausgaben_neu_page() 
 {
 	var content = {};
 	
@@ -49,19 +46,80 @@ function zs_ausgaben_aktuell_page()
 	{
 	    success: function(issue) 
 	    {
-	    	$('.issue_head').text(issue.web_headline);
+	    	var title = issue.web_headline;
+	    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + issue.artikelnr + '.jpg';
+	    	
+//	    	$('.issue_head').text(title);
+	    	$('.issue_img').attr('src', imgpath);
+	    	$('.issue_img').attr('alt', title);
+	    	$('.issue_img').attr('title', title);
 	    }
 	});	
 	
 	var currentissue = '<div class="current_issue">' 
-	+ '<div class="issue_head"></div>'
-	+ '</div>';
+//		+ '<div class="issue_head"></div>' 
+		+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
+		+ '</div>';
+	
 	content['ausgabe_img'] = 
 	{
 		markup: currentissue
 	};
 	
 	console.log(content);
+	
+	return content;
+}
+
+
+/**
+* The callback for the "Aktuelle Ausgabe" page.
+*/
+function zs_ausgaben_alle_page() 
+{
+	var content = {};
+	
+	zs_ausgaben_get_current_issue(
+	{
+	    success: function(issue) 
+	    {
+	    	var title = issue.web_headline;
+	    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + issue.artikelnr + '.jpg';
+	    	
+//	    	$('.issue_head').text(title);
+	    	$('.issue_img').attr('src', imgpath);
+	    	$('.issue_img').attr('alt', title);
+	    	$('.issue_img').attr('title', title);
+	    }
+	});	
+	
+	var currentissue = '<div class="current_issue">' 
+//		+ '<div class="issue_head"></div>' 
+		+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
+		+ '</div>';
+	
+	content['ausgabe_img'] = 
+	{
+		markup: currentissue
+	};
+	
+	console.log(content);
+	
+	return content;
+}
+
+
+/**
+* The callback for the "Downloads" page.
+*/
+function zs_ausgaben_downloads_page() 
+{
+	var content = {};
+
+	content['downloads'] = 
+	{
+		markup: 'no downloads'
+	};
 	
 	return content;
 }

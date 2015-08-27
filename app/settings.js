@@ -57,10 +57,10 @@ drupalgap.settings.locale = {
  *************/
 
 // App Title
-drupalgap.settings.title = 'DrupalGap';
+drupalgap.settings.title = 'Kiosk';
  
 // App Front Page
-drupalgap.settings.front = 'aktuell';
+drupalgap.settings.front = 'neu';
 
 // Theme
 drupalgap.settings.theme = 'easystreet3';
@@ -77,17 +77,17 @@ drupalgap.settings.exit_message = 'Exit ' + drupalgap.settings.title + '?';
 // Loader Animations - http://demos.jquerymobile.com/1.4.0/loader/
 drupalgap.settings.loader = {
   loading: {
-    text: 'Loading...',
+    text: 'Lade ...',
     textVisible: true,
     theme: 'b'
   },
   saving: {
-    text: 'Saving...',
+    text: 'Speichere ...',
     textVisible: true,
     theme: 'b'
   },
   deleting: {
-    text: 'Deleting...',
+    text: 'Lösche ...',
     textVisible: true,
     theme: 'b'
   }
@@ -103,7 +103,6 @@ drupalgap.settings.loader = {
 
 /** Custom Modules - www/app/modules/custom **/
 
-Drupal.modules.custom['test'] = {};
 Drupal.modules.custom['zs_ausgaben'] = {};
 
 /***************************************|
@@ -112,54 +111,54 @@ Drupal.modules.custom['zs_ausgaben'] = {};
 drupalgap.settings.menus = {}; // Do not remove this line.
 
 // User Menu Anonymous
-drupalgap.settings.menus['user_menu_anonymous'] = {
-  options: menu_popup_get_default_options(),
-  links: [
-    {
-      title: 'Login',
-      path: 'user/login',
-      options: {
-        attributes: {
-          'data-icon': 'lock'
-        }
-      }
-    },
-    {
-      title: 'Create new account',
-      path: 'user/register',
-      options: {
-        attributes: {
-          'data-icon': 'plus'
-        }
-      }
-    }
-  ]
-};
+//drupalgap.settings.menus['user_menu_anonymous'] = {
+//  options: menu_popup_get_default_options(),
+//  links: [
+//    {
+//      title: 'Login',
+//      path: 'user/login',
+//      options: {
+//        attributes: {
+//          'data-icon': 'lock'
+//        }
+//      }
+//    },
+//    {
+//      title: 'Create new account',
+//      path: 'user/register',
+//      options: {
+//        attributes: {
+//          'data-icon': 'plus'
+//        }
+//      }
+//    }
+//  ]
+//};
 
 // User Menu Authenticated
-drupalgap.settings.menus['user_menu_authenticated'] = {
-  options: menu_popup_get_default_options(),
-  links: [
-    {
-      title: 'My Account',
-      path: 'user',
-      options: {
-        attributes: {
-          'data-icon': 'user'
-        }
-      }
-    },
-    {
-      title: 'Logout',
-      path: 'user/logout',
-      options: {
-        attributes: {
-          'data-icon': 'delete'
-        }
-      }
-    }
-  ]
-};
+//drupalgap.settings.menus['user_menu_authenticated'] = {
+//  options: menu_popup_get_default_options(),
+//  links: [
+//    {
+//      title: 'My Account',
+//      path: 'user',
+//      options: {
+//        attributes: {
+//          'data-icon': 'user'
+//        }
+//      }
+//    },
+//    {
+//      title: 'Logout',
+//      path: 'user/logout',
+//      options: {
+//        attributes: {
+//          'data-icon': 'delete'
+//        }
+//      }
+//    }
+//  ]
+//};
 
 // Main Menu
 drupalgap.settings.menus['main_menu'] = {
@@ -174,24 +173,41 @@ drupalgap.settings.menus['main_menu'] = {
         }
       }
     },
+//    {
+//      title:'Taxonomy',
+//      path:'taxonomy/vocabularies',
+//      options:{
+//        attributes:{
+//          'data-icon':'grid'
+//        }
+//      }
+//    },
+//    {
+//      title:'Users',
+//      path:'user-listing',
+//      options:{
+//        attributes:{
+//          'data-icon':'info'
+//        }
+//      }
+//    }
+  ]
+};
+
+
+
+drupalgap.settings.menus['footer_menu'] = {
+  options: menu_popup_get_default_options(),
+  links: [
     {
-      title:'Taxonomy',
-      path:'taxonomy/vocabularies',
+      title:'NEU',
+      path:'neu',
       options:{
         attributes:{
-          'data-icon':'grid'
+          'data-icon':'star'
         }
       }
     },
-    {
-      title:'Users',
-      path:'user-listing',
-      options:{
-        attributes:{
-          'data-icon':'info'
-        }
-      }
-    }
   ]
 };
 
@@ -229,6 +245,7 @@ drupalgap.settings.blocks.easystreet3 = {
 //    zs_ausgaben_block: { }
   },
   footer: {
+	  footer_menu: { }
 //    powered_by: { }
   }
 };
@@ -242,16 +259,16 @@ drupalgap.settings.menus.regions = {}; // Do not remove this line.
 drupalgap.settings.menus.regions['header'] = {
   links:[
     /* Main Menu Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'main_menu',
-        attributes: {
-          'class': 'ui-btn-left',
-          'data-icon': 'bars'
-        }
-      }
-    },
+//    {
+//      options: {
+//        popup: true,
+//        popup_delta: 'main_menu',
+//        attributes: {
+//          'class': 'ui-btn-left',
+//          'data-icon': 'bars'
+//        }
+//      }
+//    },
     /* Home Button */
     {
       path: '',
@@ -261,63 +278,93 @@ drupalgap.settings.menus.regions['header'] = {
           'data-iconpos': 'notext',
           'class': 'ui-btn-left'
         }
-      },
-      pages: {
-        value: [''],
-        mode: 'exclude'
       }
     },
     /* Anonymous User Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'user_menu_anonymous',
-        attributes: {
-          'class': 'ui-btn-right',
-          'data-icon': 'user'
-        }
-      },
-      roles: {
-        value: ['anonymous user'],
-        mode: 'include',
-      }
-    },
+//    {
+//      options: {
+//        popup: true,
+//        popup_delta: 'user_menu_anonymous',
+//        attributes: {
+//          'class': 'ui-btn-right',
+//          'data-icon': 'user'
+//        }
+//      },
+//      roles: {
+//        value: ['anonymous user'],
+//        mode: 'include',
+//      }
+//    },
     /* Authenticated User Popup Menu Button */
-    {
-      options: {
-        popup: true,
-        popup_delta: 'user_menu_authenticated',
-        attributes: {
-          'class': 'ui-btn-right',
-          'data-icon': 'user'
-        }
-      },
-      roles: {
-        value: ['authenticated user'],
-        mode: 'include',
-      }
-    }
+//    {
+//      options: {
+//        popup: true,
+//        popup_delta: 'user_menu_authenticated',
+//        attributes: {
+//          'class': 'ui-btn-right',
+//          'data-icon': 'user'
+//        }
+//      },
+//      roles: {
+//        value: ['authenticated user'],
+//        mode: 'include',
+//      }
+//    }
   ]
 };
 
 // Footer Region Links
 drupalgap.settings.menus.regions['footer'] = {
-  links: [
+	links: [
     /* Back Button */
     {
-      options: {
-        attributes: {
-          'data-icon': 'back',
-          'data-iconpos': 'notext',
-          'class': 'ui-btn-right',
-          'onclick': 'javascript:drupalgap_back();'
-        }
-      },
-      pages: {
-        value: [''],
-        mode: 'exclude'
-      }
-    }
+    	options: {
+    		attributes: {
+    			'data-icon': 'back',
+    			'data-iconpos': 'notext',
+    			'class': 'ui-btn-right',
+    			'onclick': 'javascript:drupalgap_back();'
+    		}
+    	},
+    	pages: {
+    		value: [''],
+    		mode: 'exclude'
+    	}
+	},
+	
+    {
+		title: 'NEU',
+		path: 'neu',
+		options: {
+			attributes: {
+				'data-icon': 'star',
+				'class': 'ui-btn-left'
+			}
+		}
+    },	
+	
+    {
+		title: 'Alle Ausgaben',
+		path: 'alle',
+		options: {
+			attributes: {
+				'data-icon': 'grid',
+				'class': 'ui-btn-left'
+			}
+		}
+    },	
+	
+    {
+		title: 'Meine Downloads',
+		path: 'downloads',
+		options: {
+			attributes: {
+				'data-icon': 'arrow-d',
+				'class': 'ui-btn-left'
+			}
+		}
+    },	
+	
   ]
 };
 

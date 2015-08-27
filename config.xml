@@ -1,1 +1,36 @@
-<?xml version='1.0' encoding='utf-8'?><widget id="com.crusoemedia.kiosk" version="1.5.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">    <name>CrusoeMedia Kiosk</name>    <description>CrusoeMedia Kiosk App    </description>    <author email="m.froschmeier@crusoemedia.com" href="http://www.crusoemedia.com.com">        CrusoeMedia Kiosk    </author>    <preference name="permissions" value="none" />    <preference name="orientation" value="default" />    <preference name="target-device" value="universal" />    <preference name="fullscreen" value="false" />    <preference name="webviewbounce" value="true" />    <preference name="prerendered-icon" value="true" />    <preference name="stay-in-webview" value="false" />    <preference name="ios-statusbarstyle" value="black-opaque" />    <preference name="detect-data-types" value="true" />    <preference name="exit-on-suspend" value="false" />    <preference name="show-splash-screen-spinner" value="false" />    <preference name="ShowSplashScreenSpinner" value="false" />    <preference name="auto-hide-splash-screen" value="false" />    <preference name="AutoHideSplashScreen" value="false" />    <preference name="disable-cursor" value="false" />    <preference name="android-minSdkVersion" value="16" />    <preference name="android-installLocation" value="auto" />    <preference name="DisallowOverscroll" value="true" />    <preference name="WebViewBounce" value="false" />    		<gap:platform name="ios" />		<gap:platform name="android" />		<feature name="http://api.phonegap.com/1.0/network"/>		<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />		    <access origin="*" />    <content src="index.html" /></widget>
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.crusoemedia.kiosk" version="1.5.5" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>CrusoeMedia Kiosk</name>
+    <description>CrusoeMedia Kiosk App
+    </description>
+    <author email="m.froschmeier@crusoemedia.com" href="http://www.crusoemedia.com.com">
+        CrusoeMedia Kiosk
+    </author>
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="WebViewBounce" value="false" />
+    
+		<gap:platform name="ios" />
+		<gap:platform name="android" />
+		<feature name="http://api.phonegap.com/1.0/network"/>
+		<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+		
+    <access origin="*" />
+    <content src="index.html" />
+</widget>
