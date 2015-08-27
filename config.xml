@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.adobe.phonegap.app" version="1.5.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>DrupalGap Test</name>
-    <description>The PhoneGap Developer app is a testing utility for web developers and designers using the PhoneGap framework. After installing this app on your device you will be able to connect it to the PhoneGap desktop app to instantly view and test your work.
+<widget id="com.crusoemedia.kiosk" version="1.5.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>CrusoeMedia Kiosk</name>
+    <description>CrusoeMedia Kiosk App
     </description>
-    <author email="mf@crusoemedia.com" href="http://www.crusoemedia.com.com">
-        DrupalGap Test
+    <author email="m.froschmeier@crusoemedia.com" href="http://www.crusoemedia.com.com">
+        CrusoeMedia Kiosk
     </author>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
