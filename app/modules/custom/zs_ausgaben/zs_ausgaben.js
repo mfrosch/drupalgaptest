@@ -38,7 +38,9 @@ function zs_ausgaben_menu()
 //	        'title_callback': 'zs_ausgaben_page_title',
 //	        'title_arguments': [1]
 //	
-		title: 'Ausgabe',
+		title: 'Bergsteiger',
+//		title_callback: 'zs_ausgaben_ausgabe_page_title',
+//        title_arguments: [1],
 		page_callback: 'zs_ausgaben_ausgabe_page',
 		page_arguments: [1],
 	};
@@ -56,6 +58,19 @@ function zs_ausgaben_get_current_issue(options)
 	    Drupal.services.call(options);
 	}
 	catch (error) { console.log('zs_mobile_service_get_current_issue - ' + error); }
+}	
+
+function zs_ausgaben_get_issue(options) 
+{
+	try 
+	{
+	    options.method = 'POST';
+	    options.path = 'zs_mobile_service_resources/get_issue.json';
+	    options.service = 'zs_mobile_service';
+	    options.resource = 'get_issue';
+	    Drupal.services.call(options);
+	}
+	catch (error) { console.log('zs_mobile_service_get_issue - ' + error); }
 }	
 
 /**
@@ -77,10 +92,12 @@ function zs_ausgaben_neu_page()
 	    	$('.issue_img').attr('alt', title);
 	    	$('.issue_img').attr('title', title);
 	    	$('.issue_link').attr('onclick', "javascript:drupalgap_goto('ausgabe/" + id + "')");
+	    	
+	    	$('.issue').fadeIn();
 	    }
 	});	
 	
-	var currentissue = '<div class="current_issue">' 
+	var currentissue = '<div class="issue" style="display: none">' 
 		+ '<div class="issue_img_wrap"><a class="issue_link" onclick="javascript:drupalgap_goto(\'alle\');"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></a></div>'
 		+ '</div>';
 	
@@ -91,6 +108,73 @@ function zs_ausgaben_neu_page()
 	
 	return content;
 }
+
+/**
+* The callback for the "Ausgabe" Single page.
+*/
+function zs_ausgaben_ausgabe_page(ausgabe) 
+{
+	try {
+	    if (ausgabe) 
+	    {	
+	    	var args = {
+	    		artikelnr: ausgabe
+			};
+	    	zs_ausgaben_get_issue({
+			    data: JSON.stringify(args),
+			    success: function(issue) {
+			    	console.log(issue);
+			    	
+			    	var title = issue.web_headline;
+			    	var id = issue.artikelnr;
+			    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + id + '.jpg';
+			    	var issuedate = 'Ausgabe ' + issue.auflagename;
+			    	
+			    	$('.issue_img').attr('src', imgpath);
+			    	$('.issue_img').attr('alt', title);
+			    	$('.issue_img').attr('title', title);			    	
+
+			    	$('.issue_head').text(title);
+			    	$('.issue_date').text(issuedate);
+			    	$('.issue').fadeIn();
+			    }
+			});	    	
+	    	
+	    	var issue = '<div class="issue" style="display: none">' 
+	    		+ '<div class="issue_head"></div>'
+	    		+ '<div class="issue_date"></div>'
+	    		+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
+	    		+ '<div class="issue_desc_head">Beschreibung</div>'
+	    		+ '<div class="issue_desc"></div>'
+	    		+ '</div>';
+	    	
+	    	return issue;
+    	}
+	    else { drupalgap_error(t('No ausgabe id provided!')); }
+	}
+	catch (error) { console.log('node_page_view - ' + error); }
+}
+
+//function zs_ausgaben_ausgabe_page_title(callback, ausgabe) {
+//	try {
+//		if (ausgabe) 
+//	    {	
+//	    	var args = {
+//	    		artikelnr: ausgabe
+//			};
+//	    	zs_ausgaben_get_issue({
+//			    data: JSON.stringify(args),
+//			    success: function(issue) {
+//			    	
+//			    	var title = issue.web_headline;
+//			    	callback.call(null, title);
+//			    }
+//			});	    	
+//    	}
+//	    else { drupalgap_error(t('No ausgabe id provided!')); }
+//	}
+//	catch (error) { console.log('node_page_title - ' + error); }
+//}
 
 
 /**
@@ -128,6 +212,12 @@ function zs_ausgaben_alle_page()
 	
 	return content;
 }
+
+
+
+
+
+
 
 
 /**
@@ -174,20 +264,6 @@ function zs_ausgaben_impressum_page()
 	return "impressum";
 }
 
-/**
-* The callback for the "Ausgabe" Single page.
-*/
-function zs_ausgaben_ausgabe_page(ausgabe) 
-{
-	try {
-	    if (ausgabe) {
-	    	var content = "test"
-	    	return content;
-    	}
-	    else { drupalgap_error(t('No ausgabe id provided!')); }
-	}
-	catch (error) { console.log('node_page_view - ' + error); }
-}
 
 
 
@@ -195,30 +271,6 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 
 
 
-
-
-
-
-
-
-
-
-
-
-//
-///**
-// * The title call back function for the node view page.
-// * @param {Function} callback
-// * @param {Number} nid
-// */
-//function zs_ausgaben_page_title(callback, nid) {
-//  try {
-//    // Try to load the node title, then send it back to the given callback.
-//    var title = 'testtitle';
-//    callback.call(null, title);
-//  }
-//  catch (error) { console.log('node_page_title - ' + error); }
-//}
 //
 //function zs_ausgaben_page_view(nid) {
 //	  try {
