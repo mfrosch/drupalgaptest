@@ -240,7 +240,9 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 			    		+ '<div class="issue_head"></div>'
 			    		+ '<div class="issue_date"></div>'
 //			    		+ '<a class="issue_link" onclick="javascript:drupalgap_goto(\'ausgabe/' + auflageid + '\');">'
-			    		+ bl('DrupalGap', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true', { InAppBrowser: true })
+			    		+ bl('pdf google', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true', { InAppBrowser: true })
+			    		+ '<a id="full1" data-role="button" onclick="window.plugins.childBrowser.showWebPage(\'http://www.crusoemedia.com/kunden/test.pdf\');" data-theme="b">PDF child</a>'
+			    		+ '<a id="full2" data-role="button" onclick="window.open(\'http://www.crusoemedia.com/kunden/test.pdf\', \'_system\', \'location=yes\')" data-theme="b">PDF system</a>'
 			    		+ bl('Ausgabe kaufen', 'node/456')
 			    		+ bl('Leseprobe öffnen1', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true')
 	    			+ '</div>'
