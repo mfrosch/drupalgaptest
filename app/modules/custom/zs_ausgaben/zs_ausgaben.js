@@ -47,17 +47,17 @@ function zs_ausgaben_menu()
 	return items;
 }
 
-function zs_ausgaben_get_current_issue(options) 
+function zs_ausgaben_get_issues(options) 
 {
 	try 
 	{
 	    options.method = 'POST';
-	    options.path = 'zs_mobile_service_resources/get_current_issue.json';
+	    options.path = 'zs_mobile_service_resources/get_issues.json';
 	    options.service = 'zs_mobile_service';
-	    options.resource = 'get_current_issue';
+	    options.resource = 'get_issues';
 	    Drupal.services.call(options);
 	}
-	catch (error) { console.log('zs_mobile_service_get_current_issue - ' + error); }
+	catch (error) { console.log('zs_mobile_service_get_issues - ' + error); }
 }	
 
 function zs_ausgaben_get_issue(options) 
@@ -73,27 +73,47 @@ function zs_ausgaben_get_issue(options)
 	catch (error) { console.log('zs_mobile_service_get_issue - ' + error); }
 }	
 
+function zs_ausgaben_get_issue_index(options) 
+{
+	try 
+	{
+	    options.method = 'POST';
+	    options.path = 'zs_mobile_service_resources/get_issue_index.json';
+	    options.service = 'zs_mobile_service';
+	    options.resource = 'get_issue_index';
+	    Drupal.services.call(options);
+	}
+	catch (error) { console.log('zs_mobile_service_get_issue - ' + error); }
+}	
+
 /**
 * The callback for the "Aktuelle Ausgabe" page.
 */
 function zs_ausgaben_neu_page() 
 {
-	var content = {};
+	var args = {
+		limit: 1
+	};
 	
-	zs_ausgaben_get_current_issue(
+	zs_ausgaben_get_issues(
 	{
-	    success: function(issue) 
+		data: JSON.stringify(args),
+	    success: function(issues) 
 	    {
-	    	var title = issue.web_headline;
-	    	var id = issue.artikelnr;
-	    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + id + '.jpg';
-	    	
-	    	$('.issue_img').attr('src', imgpath);
-	    	$('.issue_img').attr('alt', title);
-	    	$('.issue_img').attr('title', title);
-	    	$('.issue_link').attr('onclick', "javascript:drupalgap_goto('ausgabe/" + id + "')");
-	    	
-	    	$('.issue').fadeIn();
+	    	issues.forEach(function(issue) {
+		    	var title = issue.web_headline;
+		    	var artikelnr = issue.artikelnr;
+		    	var auflageid = issue.auflage_id;
+		    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + artikelnr + '.jpg';
+		    	
+		    	$('.issue_img').attr('src', imgpath);
+		    	$('.issue_img').attr('alt', title);
+		    	$('.issue_img').attr('title', title);
+		    	$('.issue_link').attr('onclick', "javascript:drupalgap_goto('ausgabe/" + auflageid + "')");
+		    	
+		    	$('.issue').fadeIn();	    	    
+	    	    
+	    	});
 	    }
 	});	
 	
@@ -101,12 +121,45 @@ function zs_ausgaben_neu_page()
 		+ '<div class="issue_img_wrap"><a class="issue_link" onclick="javascript:drupalgap_goto(\'alle\');"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></a></div>'
 		+ '</div>';
 	
-	content['ausgabe_img'] = 
-	{
-		markup: currentissue
+	return currentissue;
+}
+
+/**
+* The callback for the "Aktuelle Ausgabe" page.
+*/
+function zs_ausgaben_alle_page() 
+{
+	var args = {
+		limit: 0
 	};
 	
-	return content;
+	zs_ausgaben_get_issues(
+	{
+		data: JSON.stringify(args),
+	    success: function(issues) 
+	    {
+	    	issues.forEach(function(issue) {
+		    	var title = issue.web_headline;
+		    	var artikelnr = issue.artikelnr;
+		    	var auflageid = issue.auflage_id;
+		    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + artikelnr + '.jpg';
+		    	
+		    	var issuehtml = '<div class="issue">' 
+		    		+ '<div class="issue_img_wrap"><a class="issue_link" onclick="javascript:drupalgap_goto(\'ausgabe/' + auflageid + '\');">'
+		    		+ '<img class="issue_img" src="' + imgpath + '" alt="' + title + '" title="' + title + '" /></a></div>'
+		    		+ '</div>';		
+		    	
+	    	    $('.issues_container').append(issuehtml);
+	    	});
+
+	    	$('.issues_container').fadeIn();	
+	    }
+	});	
+	
+	var currentissue = '<div class="issues_container" style="display: none">' 
+		+ '</div>';
+	
+	return currentissue;
 }
 
 /**
@@ -118,7 +171,7 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 	    if (ausgabe) 
 	    {	
 	    	var args = {
-	    		artikelnr: ausgabe
+	    		auflageid: ausgabe
 			};
 	    	zs_ausgaben_get_issue({
 			    data: JSON.stringify(args),
@@ -126,8 +179,9 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 			    	console.log(issue);
 			    	
 			    	var title = issue.web_headline;
-			    	var id = issue.artikelnr;
-			    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + id + '.jpg';
+			    	var artikelnr = issue.artikelnr;
+			    	var auflageid = issue.auflage_id;
+			    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + artikelnr + '.jpg';
 			    	var issuedate = 'Ausgabe ' + issue.auflagename;
 			    	
 			    	$('.issue_img').attr('src', imgpath);
@@ -138,14 +192,60 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 			    	$('.issue_date').text(issuedate);
 			    	$('.issue').fadeIn();
 			    }
+			});	   
+	    	
+	    	zs_ausgaben_get_issue_index({
+			    data: JSON.stringify(args),
+			    success: function(index) {
+			    	console.log(index);
+
+			    	index.forEach(function(ind) 
+			    	{
+			    		var title = ind.ititel;
+			    		var body = '';
+			    		var appstr = '';
+			    		
+			    		if (ind.irubrik.length > 0)
+		    			{
+			    			title = ind.irubrik + ": " + title;
+		    			}
+			    		
+			    		if (ind.izeile.length > 0)
+		    			{
+			    			body = '<div class="index_body">'
+				    				+ ind.izeile
+				    			+ '</div>';
+		    			}
+			    		
+			    		var appstr = '<div class="index_wrap">'
+				    			+ '<div class="index_head">'
+				    				+ title
+				    			+ '</div>'
+				    			+ body
+		    				+ '</div>';
+			    		
+			    		$('.issue_desc_container').append(appstr);
+			    	});
+			    	
+
+			    	$('.issue_desc_wrap').fadeIn();
+			    }
 			});	    	
 	    	
 	    	var issue = '<div class="issue" style="display: none">' 
-	    		+ '<div class="issue_head"></div>'
-	    		+ '<div class="issue_date"></div>'
-	    		+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
-	    		+ '<div class="issue_desc_head">Beschreibung</div>'
-	    		+ '<div class="issue_desc"></div>'
+	    			+ '<div class="issue_top_left">'
+	    				+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
+	    			+ '</div>' 
+	    			+ '<div class="issue_top_right">'
+			    		+ '<div class="issue_head"></div>'
+			    		+ '<div class="issue_date"></div>'
+			    		+ bl('Ausgabe kaufen', 'node/456')
+			    		+ bl('Leseprobe öffnen', 'node/456')
+	    			+ '</div>'
+	    			+ '<div class="issue_desc_wrap" style="display: none">'
+	    				+ '<div class="issue_desc_head">Beschreibung</div>'
+	    				+ '<div class="issue_desc_container"></div>'
+	    			+ '</div>'
 	    		+ '</div>';
 	    	
 	    	return issue;
@@ -154,66 +254,6 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 	}
 	catch (error) { console.log('node_page_view - ' + error); }
 }
-
-//function zs_ausgaben_ausgabe_page_title(callback, ausgabe) {
-//	try {
-//		if (ausgabe) 
-//	    {	
-//	    	var args = {
-//	    		artikelnr: ausgabe
-//			};
-//	    	zs_ausgaben_get_issue({
-//			    data: JSON.stringify(args),
-//			    success: function(issue) {
-//			    	
-//			    	var title = issue.web_headline;
-//			    	callback.call(null, title);
-//			    }
-//			});	    	
-//    	}
-//	    else { drupalgap_error(t('No ausgabe id provided!')); }
-//	}
-//	catch (error) { console.log('node_page_title - ' + error); }
-//}
-
-
-/**
-* The callback for the "Aktuelle Ausgabe" page.
-*/
-function zs_ausgaben_alle_page() 
-{
-	var content = {};
-	
-	zs_ausgaben_get_current_issue(
-	{
-	    success: function(issue) 
-	    {
-	    	var title = issue.web_headline;
-	    	var imgpath = 'http://bergsteiger.de/sites/bergsteiger.de/files/bilder/cover/' + issue.artikelnr + '.jpg';
-	    	
-//	    	$('.issue_head').text(title);
-	    	$('.issue_img').attr('src', imgpath);
-	    	$('.issue_img').attr('alt', title);
-	    	$('.issue_img').attr('title', title);
-	    }
-	});	
-	
-	var currentissue = '<div class="current_issue">' 
-//		+ '<div class="issue_head"></div>' 
-		+ '<div class="issue_img_wrap"><img class="issue_img" src="#" alt="aktuelle Ausgabe" title="aktuelle Ausgabe" /></div>'
-		+ '</div>';
-	
-	content['ausgabe_img'] = 
-	{
-		markup: currentissue
-	};
-	
-	console.log(content);
-	
-	return content;
-}
-
-
 
 
 
@@ -268,6 +308,27 @@ function zs_ausgaben_impressum_page()
 
 
 
+
+//function zs_ausgaben_ausgabe_page_title(callback, ausgabe) {
+//	try {
+//		if (ausgabe) 
+//	    {	
+//	    	var args = {
+//	    		auflageid: ausgabe
+//			};
+//	    	zs_ausgaben_get_issue({
+//			    data: JSON.stringify(args),
+//			    success: function(issue) {
+//			    	
+//			    	var title = issue.web_headline;
+//			    	callback.call(null, title);
+//			    }
+//			});	    	
+//  	}
+//	    else { drupalgap_error(t('No ausgabe id provided!')); }
+//	}
+//	catch (error) { console.log('node_page_title - ' + error); }
+//}
 
 
 
