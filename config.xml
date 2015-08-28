@@ -1,12 +1,49 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="test.PDFViewerSampleApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>PDFViewerSampleApp</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+<widget id="com.crusoemedia.kiosk" version="0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Bergsteiger Kiosk</name>
+    <description>Bergsteiger.de Kiosk App
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="m.froschmeier@crusoemedia.com" href="http://www.crusoemedia.com.com">
+        CrusoeMedia Kiosk
     </author>
-    <content src="index.html" />
+    <preference name="permissions" value="none" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <preference name="prerendered-icon" value="true" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="exit-on-suspend" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="auto-hide-splash-screen" value="false" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="disable-cursor" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="WebViewBounce" value="false" />
+    
+	<gap:platform name="ios" />
+	<gap:platform name="android" />
+	<feature name="http://api.phonegap.com/1.0/network"/>
+	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
+		
     <access origin="*" />
+    <content src="index.html" />
+    
+	<icon src="icon.png" />
+
+	<icon gap:density="ldpi" gap:platform="android" src="images/icons-png/android/bersteiger_icon36x36.png" />
+	<icon gap:density="mdpi" gap:platform="android" src="images/icons-png/android/bersteiger_icon48x48.png" />
+	<icon gap:density="hdpi" gap:platform="android" src="images/icons-png/android/bersteiger_icon72x72.png" />
+	<icon gap:density="xhdpi" gap:platform="android" src="images/icons-png/android/bersteiger_icon96x96.png" />
+
+	<icon gap:platform="ios" height="57" src="images/icons-png/ios/bergsteiger_icon57x57.png" width="57" />
+	<icon gap:platform="ios" height="72" src="images/icons-png/ios/bersteiger_icon72x72.png" width="72" />
+	<icon gap:platform="ios" height="114" src="images/icons-png/ios/bersteiger_icon114x114.png" width="114" />
+	<icon gap:platform="ios" height="144" src="images/icons-png/ios/bersteiger_icon144x144.png" width="144" />    
+    
 </widget>
