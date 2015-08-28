@@ -246,7 +246,8 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 //			    		+ '<a id="full1" data-role="button" onclick="window.plugins.childBrowser.showWebPage(\'http://www.crusoemedia.com/kunden/test.pdf\', { showLocationBar: false });" data-theme="b">PDF child</a>'
 //			    		+ '<a id="full2" data-role="button" onclick="window.open(\'http://www.crusoemedia.com/kunden/test.pdf\', \'_system\', \'location=yes\')" data-theme="b">PDF system</a>'
 			    		+ bl('Ausgabe kaufen', 'node/456')
-			    		+ bl('Leseprobe öffnen1', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true')
+			    		+ bl('Leseprobe öffnen', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true', { InAppBrowser: true })
+//			    		+ bl('Leseprobe öffnen1', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true')
 	    			+ '</div>'
 	    			+ '<div class="issue_desc_wrap" style="display: none">'
 	    				+ '<div class="issue_desc_head">Beschreibung</div>'
