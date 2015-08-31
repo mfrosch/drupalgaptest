@@ -6,17 +6,17 @@ function zs_ausgaben_menu()
 	var items = {};
 	items['neu'] = 
 	{
-		title: 'NEU',
+		title: 'Neu',
 		page_callback: 'zs_ausgaben_neu_page'
 	};
 	items['alle'] = 
 	{
-		title: 'Alle Ausgaben',
+		title: 'Ausgaben',
 		page_callback: 'zs_ausgaben_alle_page'
 	};
 	items['downloads'] = 
 	{
-		title: 'Meine Downloads',
+		title: 'Downloads',
 		page_callback: 'zs_ausgaben_downloads_page'
 	};
 	items['datenschutz'] = 

@@ -325,7 +325,7 @@ drupalgap.settings.menus.regions['header'] = {
 drupalgap.settings.menus.regions['footer'] = {
 	links: [	
     {
-		title: 'NEU',
+		title: 'Neu',
 		path: 'neu',
 		options: {
 			attributes: {
@@ -336,7 +336,7 @@ drupalgap.settings.menus.regions['footer'] = {
     },	
 	
     {
-		title: 'Alle Ausgaben',
+		title: 'Ausgaben',
 		path: 'alle',
 		options: {
 			attributes: {
@@ -347,7 +347,7 @@ drupalgap.settings.menus.regions['footer'] = {
     },	
 	
     {
-		title: 'Meine Downloads',
+		title: 'Downloads',
 		path: 'downloads',
 		options: {
 			attributes: {

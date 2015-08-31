@@ -133,6 +133,17 @@ div.messages ul li {
 	padding-top: 10px;
 }
 /**
+ * New
+ */
+.ui-content .issue.neu {
+	padding: 0;
+	display: block;
+}
+.ui-content .issue.neu img {
+	width: 100% !important;
+	height: auto;
+}
+/**
  * Images
  */
 
@@ -152,6 +163,27 @@ div[role="banner"] img,
 /**
  * Menus
  */
+.region_footer .ui-controlgroup-controls,
+.region_footer .ui-controlgroup {
+	width: 100%;
+}
+.region_footer .ui-controlgroup-controls a,
+.region_footer .ui-controlgroup-controls .ui-btn-active  {
+	width: 32.911111%!important;
+	background: #C42920 !important;
+	padding: 7px 0 7px 0;
+}
+.region_footer .ui-controlgroup-controls a:after {
+	background-color: #C42920 !important;
+}
+.footer .ui-controlgroup-controls a:hover,
+.region_footer .ui-controlgroup-controls .ui-btn-active  {
+	background: #fff !important;
+	color: #C42920 !important;
+}
+.ui-btn-left {
+	left: 1px;
+}
 div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls .ui-btn-icon-notext {
   padding: .45em 1em;
 }
@@ -160,5 +192,46 @@ div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls 
       padding: .4em 1em;
     }
 }
+.ausgabe___leseprobe.ui-page .ui-content {
+	padding: 0;
+} 
+/**
+ * Queries
+ */
 
-
+@media (max-width: 385px) { 
+	/* list */
+	.ui-content .issue {
+		width: 46%;
+	}
+	.ui-content .issue.neu {
+		width: 100%;
+	}
+	.ui-content .issue.single {
+		width: 100%;
+		padding: 0 0 10px 0;
+	}
+	.ui-content .issue img {
+		width: 100% !important;
+	}
+	/* single */
+	.region_content .issue_top_right .issue_date {
+		padding-bottom: 7px;
+	}
+	.region_content .issue_top_left {
+		float: none;
+		padding: 0 0 10px 0;
+	}
+	.region_content .issue_desc_wrap .issue_desc_head {
+		padding-top: 6px;
+	}
+}
+@media (max-width: 321px) { 
+	.ui-content .issue {
+		width: 100%;
+		padding: 0 0 10px 0;
+	}
+	.region_footer .ui-controlgroup-controls a {
+		content: " ";
+	}
+}
