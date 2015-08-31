@@ -28,8 +28,9 @@
 'use strict';
 
 //var DEFAULT_URL = 'compressed.tracemonkey-pldi-09.pdf';
+var DEFAULT_URL = '../pdfs/test.pdf';
 //var DEFAULT_URL = 'https://cors-anywhere.herokuapp.com/http://zs.vh-digital.de/test.pdf';
-var DEFAULT_URL = 'https://cors-anywhere.herokuapp.com/http://zs.vh-digital.de/test.pdf';
+//var DEFAULT_URL = 'https://cors-anywhere.herokuapp.com/http://zs.vh-digital.de/test.pdf';
 var DEFAULT_SCALE_DELTA = 1.1;
 var MIN_SCALE = 0.25;
 var MAX_SCALE = 10.0;
