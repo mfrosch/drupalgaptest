@@ -92,7 +92,46 @@ div.messages ul li {
   line-height: 0em;
   margin: 0em 0em 1.3em 0em;
 }
+.ui-content .issues_container {
+	text-align: center;
+}
+.ui-content .issue {
+	padding: 7px;
+	display: inline-block;
+}
 
+/**
+ * Single
+ */
+.region_content .issue_top_left {
+	float: left;
+	padding: 0 10px 10px 0;
+}
+.region_content .issue_top_right .issue_head,
+.region_content .issue_top_right .issue_date {
+	font-weight: bold;
+}
+.region_content .issue_top_right a {
+	background: #C42920;
+	color: #fff;
+}
+.region_content .issue_top_right a:hover {
+	background: #fff;
+	color:  #C42920;
+}
+.region_content .issue_desc_wrap {
+	clear: both;
+	margin-top: 10px;
+}
+.region_content .issue_desc_wrap .issue_desc_head {
+	font-weight: bold;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #ccc;
+}
+.region_content .issue_desc_container .index_wrap .index_head {
+	font-weight: bold;
+	padding-top: 10px;
+}
 /**
  * Images
  */

@@ -281,8 +281,8 @@ drupalgap.settings.menus.regions['header'] = {
         path: '',
         options: {
           attributes: {
-            'data-icon': 'home',
-            'data-iconpos': 'notext',
+//            'data-icon': 'home',
+//            'data-iconpos': 'notext',
             'class': 'ui-btn-left show-logo'
           }
         }
