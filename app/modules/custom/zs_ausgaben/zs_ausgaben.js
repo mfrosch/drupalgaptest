@@ -44,6 +44,12 @@ function zs_ausgaben_menu()
 		page_callback: 'zs_ausgaben_ausgabe_page',
 		page_arguments: [1],
 	};
+	items['ausgabe/%/leseprobe'] = 
+	{
+		title: 'Bergsteiger',
+		page_callback: 'zs_ausgaben_ausgabe_leseprobe_page',
+		page_arguments: [1],
+	};
 	return items;
 }
 
@@ -246,7 +252,9 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 //			    		+ '<a id="full1" data-role="button" onclick="window.plugins.childBrowser.showWebPage(\'http://www.crusoemedia.com/kunden/test.pdf\', { showLocationBar: false });" data-theme="b">PDF child</a>'
 //			    		+ '<a id="full2" data-role="button" onclick="window.open(\'http://www.crusoemedia.com/kunden/test.pdf\', \'_system\', \'location=yes\')" data-theme="b">PDF system</a>'
 			    		+ bl('Ausgabe kaufen', 'node/456')
-			    		+ bl('Leseprobe öffnen', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true', { InAppBrowser: true })
+//			    		+ bl('Leseprobe öffnen', 'ausgabe/' + ausgabe + '/leseprobe')
+			    		+ bl('Leseprobe öffnen', 'pdfjs/web/viewer.html', { InAppBrowser: true })
+//			    		+ bl('Leseprobe öffnen', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true', { InAppBrowser: true })
 //			    		+ bl('Leseprobe öffnen1', 'https://docs.google.com/viewer?url=http://www.crusoemedia.com/kunden/test.pdf&embedded=true')
 	    			+ '</div>'
 	    			+ '<div class="issue_desc_wrap" style="display: none">'
@@ -261,9 +269,20 @@ function zs_ausgaben_ausgabe_page(ausgabe)
 	}
 	catch (error) { console.log('node_page_view - ' + error); }
 }
-
-
-
+/**
+* The callback for the "Ausgabe" Single page.
+*/
+function zs_ausgaben_ausgabe_leseprobe_page(ausgabe) 
+{
+	try {
+	    if (ausgabe) 
+	    {	
+	    	
+    	}
+	    else { drupalgap_error(t('No ausgabe id provided!')); }
+	}
+	catch (error) { console.log('leseprobe - ' + error); }
+}
 
 /**
 * The callback for the "Downloads" page.
