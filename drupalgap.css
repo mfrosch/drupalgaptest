@@ -7,7 +7,16 @@
  #_drupalgap_splash_content {
    width: 100%; height: 100%; position: relative;
  }
-
+/**
+ * Header
+ */
+.region_header {
+	background: #e3001b;
+	border-color: #e3001b;
+}
+.ui-shadow {
+	box-shadow: none;
+}
 /**
  * Logo
  */
@@ -26,7 +35,6 @@ div.form-item {
 /**
  * System Messages
  */
-
 div.messages {
   background-position: 8px 8px; /* LTR */
   background-repeat: no-repeat;
@@ -99,6 +107,9 @@ div.messages ul li {
 	padding: 7px;
 	display: inline-block;
 }
+.issue .ausgabe {
+	font-weight: bold;
+}
 
 /**
  * Single
@@ -112,8 +123,8 @@ div.messages ul li {
 	font-weight: bold;
 }
 .region_content .issue_top_right a {
-	background: #C42920;
-	color: #fff;
+	background: #e3001b!important;
+	color: #fff !important;;
 }
 .region_content .issue_top_right a:hover {
 	background: #fff;
@@ -139,9 +150,34 @@ div.messages ul li {
 	padding: 0;
 	display: block;
 }
-.ui-content .issue.neu img {
-	width: 100% !important;
-	height: auto;
+.ui-content .issue.neu .issue_img_wrap {
+	text-align: center;
+}
+.issue.neu .ausgabe {
+	text-align: center;
+	font-weight: bold;
+	padding: 10px 0 20px 0;
+}
+.subhead {
+	margin: 0 14%;
+	padding: 10px 0;
+	border-bottom: 1px solid #ccc;
+}
+.subhead .label {
+	font-weight: bold;
+}
+.subhead .showall {
+	float: right;
+}
+/**
+ * New Slider
+ */
+.slick-slider .issue_img_wrap {
+	padding: 7px;
+    display: inline-block;
+}
+.slick-slider .ausgabe {
+	font-weight: bold;
 }
 /**
  * Images
@@ -163,26 +199,49 @@ div[role="banner"] img,
 /**
  * Menus
  */
-.region_footer .ui-controlgroup-controls,
-.region_footer .ui-controlgroup {
-	width: 100%;
+.ui-bar-b .ui-btn-right {
+	background: #e3001b !important;
+	border-color: #e3001b !important;
 }
-.region_footer .ui-controlgroup-controls a,
-.region_footer .ui-controlgroup-controls .ui-btn-active  {
-	width: 32.911111%!important;
-	background: #C42920 !important;
-	padding: 7px 0 7px 0;
+.ui-bar-b .ui-btn-right:after {
+	background-color: #e3001b !important;
 }
-.region_footer .ui-controlgroup-controls a:after {
-	background-color: #C42920 !important;
+.ui-popup,
+.ui-controlgroup-controls,
+.region_header a:focus{
+	border: none !important;
+	box-shadow: none !important;
 }
-.footer .ui-controlgroup-controls a:hover,
-.region_footer .ui-controlgroup-controls .ui-btn-active  {
+.ui-popup ul li a,
+.ui-controlgroup-controls a {
+	background: #e3001b !important;
+	color: #fff !important;
+	text-shadow: none !important;
+}
+.ui-popup ul li a:focus,
+.region_header .ui-btn-right:focus,
+.ui-controlgroup-controls a:focus {
+	border: none !important;
 	background: #fff !important;
-	color: #C42920 !important;
+	color: #e3001b !important;
+	box-shadow: none !important;
+}
+.ui-controlgroup-controls a {
+	border: none;
+}
+.ui-popup ul li a:after,
+.ui-controlgroup-controls a:after {
+	background-color: #e3001b !important;
+} 
+.ui-popup ul li:first-child a {
+	border: none;
+}
+.ui-popup .ui-btn-active {
+	background-color: #fff !important;
+	color: #e3001b !important;
 }
 .ui-btn-left {
-	left: 1px;
+	left: 0;
 }
 div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls .ui-btn-icon-notext {
   padding: .45em 1em;
@@ -198,11 +257,16 @@ div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls 
 /**
  * Queries
  */
-
-@media (max-width: 385px) { 
+@media (max-width: 679px) { 
+	.subhead {
+		margin: 0 8%;
+	}
+}
+@media (max-width: 480px) { 
 	/* list */
 	.ui-content .issue {
-		width: 46%;
+		width: 47%;
+		padding: 3px;
 	}
 	.ui-content .issue.neu {
 		width: 100%;
@@ -210,9 +274,6 @@ div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls 
 	.ui-content .issue.single {
 		width: 100%;
 		padding: 0 0 10px 0;
-	}
-	.ui-content .issue img {
-		width: 100% !important;
 	}
 	/* single */
 	.region_content .issue_top_right .issue_date {
@@ -225,13 +286,16 @@ div[data-role="header"] div[data-role="controlgroup"] .ui-controlgroup-controls 
 	.region_content .issue_desc_wrap .issue_desc_head {
 		padding-top: 6px;
 	}
-}
-@media (max-width: 321px) { 
-	.ui-content .issue {
-		width: 100%;
-		padding: 0 0 10px 0;
+	.subhead {
+		margin: 0;
 	}
-	.region_footer .ui-controlgroup-controls a {
-		content: " ";
+}
+@media (max-width: 370px) {
+	.region_footer .ui-controlgroup-controls a,
+	.region_footer .ui-controlgroup-controls .ui-btn-active  {
+		text-indent: -9999em;
+	}
+	.region_footer .ui-controlgroup-controls a:after {
+		margin-left: 35%;
 	}
 }

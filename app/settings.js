@@ -22,7 +22,7 @@ Drupal.settings.site_path = 'http://zs.vh-digital.de'; // e.g. http://www.exampl
 Drupal.settings.endpoint = 'drupalgap';
 
 // Files Directory Paths (use one or the other)
-Drupal.settings.file_public_path = 'sites/default/files';
+Drupal.settings.file_public_path = 'sites/zs.vh-digital.de/files';
 //Drupal.settings.file_private_path = 'system/files';
 
 // The Default Language Code
@@ -58,16 +58,16 @@ drupalgap.settings.locale = {
  *************/
 
 // App Title
-drupalgap.settings.title = 'Kiosk';
+drupalgap.settings.title = 'Bergsteiger';
  
 // App Front Page
 drupalgap.settings.front = 'neu';
 
 // Theme
-drupalgap.settings.theme = 'easystreet3';
+drupalgap.settings.theme = 'easystreet3adapt';
 
 // Logo
-drupalgap.settings.logo = 'themes/easystreet3/images/drupalgap.jpg';
+drupalgap.settings.logo = 'themes/easystreet3adapt/images/drupalgap.jpg';
 
 // Offline Warning Message. Set to false to hide message.
 drupalgap.settings.offline_message = 'No connection found!';
@@ -166,11 +166,40 @@ drupalgap.settings.menus['main_menu'] = {
 	options: menu_popup_get_default_options(),
 	links: [
 	        {
+	    		title: 'Neu',
+	    		path: 'neu',
+	    		options: {
+	    			attributes: {
+	    				'data-icon': 'star',
+	    			}
+	    		}
+	        },	
+	    	
+	        {
+	    		title: 'Ausgaben',
+	    		path: 'alle',
+	    		options: {
+	    			attributes: {
+	    				'data-icon': 'grid',
+	    			}
+	    		}
+	        },	
+	    	
+	        {
+	    		title: 'Downloads',
+	    		path: 'downloads',
+	    		options: {
+	    			attributes: {
+	    				'data-icon': 'arrow-d',
+	    			}
+	    		}
+	        },	        
+	        {
 	        	title:'Datenschutz',
 	        	path:'datenschutz',
 	        	options:{
 	        		attributes:{
-	        			'data-icon':'carat-l'
+	        			'data-icon':'lock'
 	        		}
 	        	}
             },
@@ -179,7 +208,7 @@ drupalgap.settings.menus['main_menu'] = {
                 path:'impressum',
                 options:{
                 	attributes:{
-                		'data-icon':'carat-l'
+                		'data-icon':'info'
                 	}
                 }
             }
@@ -209,7 +238,7 @@ drupalgap.settings.menus['main_menu'] = {
 drupalgap.settings.blocks = {}; // Do not remove this line.
 
 // Easy Street 3 Theme Blocks
-drupalgap.settings.blocks.easystreet3 = {
+drupalgap.settings.blocks.easystreet3adapt = {
   header: {
 //    user_menu_anonymous: {
 //      roles: {
@@ -236,9 +265,9 @@ drupalgap.settings.blocks.easystreet3 = {
     main: { },
 //    zs_ausgaben_block: { }
   },
-  footer: {
-	  
-  }
+//  footer: {
+//	  
+//  }
 };
 
 /****************************************************|
@@ -271,7 +300,7 @@ drupalgap.settings.menus.regions['header'] = {
         popup_delta: 'main_menu',
         attributes: {
           'class': 'ui-btn-right',
-          'data-icon': 'info'
+          'data-icon': 'bars'
         }
       }
     }, 
@@ -322,43 +351,43 @@ drupalgap.settings.menus.regions['header'] = {
 };
 
 // Footer Region Links
-drupalgap.settings.menus.regions['footer'] = {
-	links: [	
-    {
-		title: 'Neu',
-		path: 'neu',
-		options: {
-			attributes: {
-				'data-icon': 'star',
-				'class': 'ui-btn-left'
-			}
-		}
-    },	
-	
-    {
-		title: 'Ausgaben',
-		path: 'alle',
-		options: {
-			attributes: {
-				'data-icon': 'grid',
-				'class': 'ui-btn-left'
-			}
-		}
-    },	
-	
-    {
-		title: 'Downloads',
-		path: 'downloads',
-		options: {
-			attributes: {
-				'data-icon': 'arrow-d',
-				'class': 'ui-btn-left'
-			}
-		}
-    },	
-	
-  ]
-};
+//drupalgap.settings.menus.regions['footer'] = {
+//	links: [	
+//    {
+//		title: 'Neu',
+//		path: 'neu',
+//		options: {
+//			attributes: {
+//				'data-icon': 'star',
+//				'class': 'ui-btn-left'
+//			}
+//		}
+//    },	
+//	
+//    {
+//		title: 'Ausgaben',
+//		path: 'alle',
+//		options: {
+//			attributes: {
+//				'data-icon': 'grid',
+//				'class': 'ui-btn-left'
+//			}
+//		}
+//    },	
+//	
+//    {
+//		title: 'Downloads',
+//		path: 'downloads',
+//		options: {
+//			attributes: {
+//				'data-icon': 'arrow-d',
+//				'class': 'ui-btn-left'
+//			}
+//		}
+//    },	
+//	
+//  ]
+//};
 
 /*********|
  * Camera |

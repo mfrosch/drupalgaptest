@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.crusoemedia.kiosk" version="0.10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Bergsteiger Kiosk</name>
+<widget id="com.crusoemedia.kiosk" version="0.22" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Bergsteiger</name>
     <description>Bergsteiger.de Kiosk App
     </description>
     <author email="m.froschmeier@crusoemedia.com" href="http://www.crusoemedia.com.com">
@@ -15,7 +15,7 @@
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="detect-data-types" value="true" />
-    <preference name="exit-on-suspend" value="false" />
+    <preference name="exit-on-suspend" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="auto-hide-splash-screen" value="false" />
@@ -25,9 +25,11 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="WebViewBounce" value="false" />
+    <preference name="EnableViewportScale" value="true" />
     
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
+	
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
 	
